@@ -88,6 +88,4 @@ Connect MySQL using Streamlit Secrets
 Mohammed Shameem
 Final Year Computer Science Student
 Python Developer | Backend Developer
-Manage 
 
-Trorrowed/returned books
