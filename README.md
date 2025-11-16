@@ -1,91 +1,116 @@
-📚 Library Management System (Streamlit)
+📚 Library Management System (Python + Streamlit + MySQL)
 
-A simple and efficient Library Management System built using Python, Streamlit, MySQL & Pandas.
-This project allows admin users and normal users to manage books, borrow/return books, and maintain library data easily through a clean UI.
+A complete Library Management System built using Python, Streamlit, and MySQL.
+The application supports Admin and User login, book management, borrowing/return features, and a clean UI built with Streamlit.📚 Library Management System (Python + Streamlit + MySQL)
 
-Live Demo:
-👉 https://library-management-mzs4vg8rw5pkk5pahwcj3a.streamlit.app/
+🚀 Features
+🔐 Authentication
 
-⭐ Features
-🔐 User Features
+Login system with Admin and User roles
 
-1)Login & Authentication
+Role-based access control
 
-2)Search for books
+📖 Book Management (Admin)
 
-3)View available books
+Add new books
 
-4)Borrow & Return books
+Remove books
 
-🛠 Admin Features
+Update available quantity
 
-1)Add new books
+Check if a book exists
 
-2)Remove books
+🔍 Book Search (All Users)
 
-3)Update book details
+Search books by:
 
-4)Manage users
+Title
 
-5)Track borrowed/returned books
+Author
 
-🧰 Tech Stack
+Publisher
 
-Frontend: Streamlit
+Genre
 
-Backend: Python
+Book ID
 
-Database: MySQL (pymysql connector)
+📚 Borrow & Return System
 
-🗂️ Project Structure
-app.py               → Main Streamlit interface
-librarydb.py         → Database connection & SQL functions
-requirements.txt     → All required dependencies
-README.md            → Project documentation
+Borrow books (updates DB automatically)
 
+Return books
 
-⚙️ Installation
-1️⃣ Clone the Repository
-git clone https://github.com/your-username/your-repo-name.git
+Tracks availability in real time
 
-2️⃣ Install Dependencies
+🛠️ Tech Stack
+Component	Technology
+Backend	Python
+UI	Streamlit
+Database	MySQL
+ORM/Driver	PyMySQL
+
+📂 Project Structure
+Library-App/
+│── app.py                # Main Streamlit application
+│── librarydb.py          # Database connection and queries
+│── requirements.txt      # Python dependencies
+│── README.md             # Documentation
+│── assets/               # (Optional) screenshots
+
+⚙️ Installation & Setup
+1️⃣ Clone the repository
+git clone <your-repo-link>
+cd Library-App
+
+2️⃣ Install dependencies
 pip install -r requirements.txt
 
-3️⃣ Run the App
+3️⃣ Create MySQL Database
+CREATE DATABASE librarydb;
+USE librarydb;
+
+4️⃣ Create users and books tables
+
+(Replace with your actual schema)
+
+CREATE TABLE users (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    username VARCHAR(50),
+    password VARCHAR(100),
+    role VARCHAR(10)
+);
+
+CREATE TABLE books (
+    book_id INT PRIMARY KEY,
+    title VARCHAR(100),
+    author VARCHAR(100),
+    publisher VARCHAR(100),
+    genre VARCHAR(50),
+    pub_year INT,
+    available_quantity INT
+);
+
+5️⃣ Update DB credentials
+
+In librarydb.py:
+
+self.con = pymysql.connect(
+    host="localhost",
+    user="root",
+    password="yourpassword",
+    database="librarydb",
+    port=3306
+)
+
+6️⃣ Run the app
 streamlit run app.py
 
-🗄️ Database Setup (MySQL)
+🌐 IMPORTANT NOTE ABOUT ONLINE DEPLOYMENT
 
-1)Create a database:
+This project uses a local MySQL database.
+When you run the app using a shared Streamlit link, the database cannot connect.
+So login will show USER NOT FOUND.
 
-CREATE DATABASE librarydb;
-
-
-2)Create tables for users and books:
-(Your existing MySQL table setup goes here. Add only if needed.)
-
-🧩 Requirements
-1)streamlit
-2)pymysql
-3)pandas
-
-
-🌐 Deployment
-
-This project is deployed on Streamlit Cloud.
-To deploy:
-
-Upload project to GitHub
-
-Add requirements.txt
-
-Create app at https://share.streamlit.io
-
-Connect MySQL using Streamlit Secrets
-
-👨‍💻 Author
-
-Mohammed Shameem
-Final Year Computer Science Student
-Python Developer | Backend Developer
+👉 Run the app locally for full functionality.
+👉 This is normal for backend projects.
 
